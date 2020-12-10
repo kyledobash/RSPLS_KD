@@ -8,14 +8,15 @@ namespace RSPLS_actualproj_KD
 {
     public class HumanPlayer : Player
     {
-        //MEMBER VARIABLES (WHAT IT HAS)
+        //                  MEMBER VARIABLES (WHAT IT HAS)
 
-        //CONSTRUCTOR (SPAWNER)
+
+        //                  CONSTRUCTOR (SPAWNER)
         public HumanPlayer()
         {
-
+            
         }
-        //MEMBER METHODS (WHAT IT CAN DO)
+        //                  MEMBER METHODS (WHAT IT CAN DO)
         public string HumanPickGesture()
         {
             string humanInput = Console.ReadLine();

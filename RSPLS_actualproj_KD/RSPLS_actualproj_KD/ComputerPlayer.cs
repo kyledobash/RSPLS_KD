@@ -8,17 +8,18 @@ namespace RSPLS_actualproj_KD
 {
     public class ComputerPlayer : Player
     {
-        //MEMBER VARIABLES (WHAT IT HAS)
+        //                  MEMBER VARIABLES (WHAT IT HAS)
 
-        //CONSTRUCTOR (SPAWNER)
+
+        //                  CONSTRUCTOR (SPAWNER)
         public ComputerPlayer()
         {
-
+            
         }
-        //MEMBER METHODS (WHAT IT CAN DO)
-        public string ComputerPickGesture()
-        {
-            //select from gesture list using RNG
-        }
+        //                  MEMBER METHODS (WHAT IT CAN DO)
+        //public string ComputerPickGesture()
+        //{
+        //    //select from gesture list using RNG
+        //}
     }
 }

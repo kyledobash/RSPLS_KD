@@ -8,15 +8,16 @@ namespace RSPLS_actualproj_KD
 {
     public abstract class Player
     {
-        //MEMBER VARIABLES (WHAT IT HAS)
+        //                  MEMBER VARIABLES (WHAT IT HAS)
         public List<string> gestures;
         public int score;
 
-        //CONSTRUCTOR (SPAWNER)
+        //                  CONSTRUCTOR (SPAWNER)
         public Player()
         {
             score = 0;
 
+            gestures = new List<string> { };
             gestures.Add("Rock");
             gestures.Add("Paper");
             gestures.Add("Scissors");
@@ -24,7 +25,7 @@ namespace RSPLS_actualproj_KD
             gestures.Add("Spock");
         }
 
-        //MEMBER METHODS (WHAT IT CAN DO)
+        //                  MEMBER METHODS (WHAT IT CAN DO)
 
     }
 }
