@@ -10,7 +10,8 @@ namespace RSPLS_actualproj_KD
     {
         static void Main(string[] args)
         {
-
+            //instantiate a new game
+            //call a master method, that calls all other methods in order
         }
     }
 }

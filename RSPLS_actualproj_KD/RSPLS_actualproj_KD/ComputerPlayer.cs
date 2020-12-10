@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace RSPLS_actualproj_KD
 {
-    class ComputerPlayer : Player
+    public class ComputerPlayer : Player
     {
         //MEMBER VARIABLES (WHAT IT HAS)
 
         //CONSTRUCTOR (SPAWNER)
+        public ComputerPlayer()
+        {
 
+        }
         //MEMBER METHODS (WHAT IT CAN DO)
-
+        public string ComputerPickGesture()
+        {
+            //select from gesture list using RNG
+        }
     }
 }
