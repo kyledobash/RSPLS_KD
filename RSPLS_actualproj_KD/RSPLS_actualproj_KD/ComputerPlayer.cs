@@ -22,7 +22,6 @@ namespace RSPLS_actualproj_KD
         {
             Random selection = new Random();
             int selectionInt = selection.Next(0, 4);
-            //select from gesture list using RNG
             return gestures[selectionInt];
         }
     }

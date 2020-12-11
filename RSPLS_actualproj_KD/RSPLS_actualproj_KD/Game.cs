@@ -9,12 +9,17 @@ namespace RSPLS_actualproj_KD
     public class Game
     {
         //                  MEMBER VARIABLES (WHAT IT HAS)
-        int roundCount;
+        public int roundCount;
+        public List<Player> players;
+        public HumanPlayer playerOneHuman;
+        public HumanPlayer playerTwoHuman;
+        public ComputerPlayer playerTwoComputer;
 
         //                  CONSTRUCTOR (SPAWNER)
         public Game()
         {
             this.roundCount = 0;
+            players = new List<Player>();
         }
 
         //                  MEMBER METHODS (WHAT IT CAN DO)
@@ -26,14 +31,20 @@ namespace RSPLS_actualproj_KD
 
         public void SinglePlayerCreatePlayers()
         {
-            HumanPlayer playerOne = new HumanPlayer();
-            ComputerPlayer playerTwo = new ComputerPlayer();
+            
+            playerOneHuman = new HumanPlayer();
+            players.Add(playerOneHuman);
+            playerTwoComputer = new ComputerPlayer();
+            players.Add(playerTwoComputer);
+
         }
 
         public void MultiplayerCreatePlayers()
         {
-            HumanPlayer playerOne = new HumanPlayer();
-            HumanPlayer playerTwo = new HumanPlayer();
+            playerOneHuman = new HumanPlayer();
+            players.Add(playerOneHuman);
+            playerTwoHuman = new HumanPlayer();
+            players.Add(playerTwoHuman);
         }
         
         public void InitialMenu()
@@ -49,6 +60,15 @@ namespace RSPLS_actualproj_KD
                 case "2" :
                     MultiplayerCreatePlayers();
                     break;
+            }
+        }
+
+        public void gestureCompare(string player1gesture, string player2gesture, Player player1, Player player2)
+        {
+            if (player1gesture == "Rock" && player2gesture == "Scissors" )
+            {
+                Console.WriteLine(player1gesture + " crushes " + player2gesture);
+                playerOne.score++
             }
         }
     }

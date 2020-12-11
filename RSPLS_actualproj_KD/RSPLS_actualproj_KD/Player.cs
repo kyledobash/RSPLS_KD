@@ -26,6 +26,9 @@ namespace RSPLS_actualproj_KD
         }
 
         //                  MEMBER METHODS (WHAT IT CAN DO)
-
+        public void IncrementScore()
+        {
+            this.score++;
+        }
     }
 }

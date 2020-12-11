@@ -12,6 +12,8 @@ namespace RSPLS_actualproj_KD
         {
             //instantiate a new game
             //call a master method, that calls all other methods in order
+            Game game = new Game();
+            game.MultiplayerCreatePlayers();
         }
     }
 }
