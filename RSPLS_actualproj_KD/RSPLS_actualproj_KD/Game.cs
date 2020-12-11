@@ -69,6 +69,18 @@ namespace RSPLS_actualproj_KD
             Console.WriteLine("Player 1: " + players[1].score);
         }
 
+        public void AnnounceWinner(Player player1, Player player2)
+        {
+            if (player1.score >= 2)
+            {
+                Console.WriteLine("Player 1 has won the game!");
+            }
+            else if (player2.score >= 2)
+            {
+                Console.WriteLine("Player 2 has won the game!");
+            }
+        }
+
         public void gestureCompare(string player1gesture, string player2gesture, Player player1, Player player2)
         {
             //Player 1 round victory cases
@@ -177,6 +189,35 @@ namespace RSPLS_actualproj_KD
             else
             {
                 Console.WriteLine("Error comparing player gestures");
+            }
+        }
+        public void ExecuteGameFlow()
+        {
+            this.InitialMenu();
+            if (players[1] == playerTwoHuman)
+            {
+                while (playerOneHuman.score < 2 && playerTwoHuman.score < 2)
+                {
+                    this.AskForGesture();
+                    string player1Move = playerOneHuman.HumanPickGesture();
+                    this.AskForGesture();
+                    string player2Move = playerTwoHuman.HumanPickGesture();
+
+                    this.gestureCompare(player1Move, player2Move, playerOneHuman, playerTwoHuman);
+                }
+                this.AnnounceWinner(playerOneHuman, playerTwoHuman);
+            }
+            else if (players[1] == playerTwoComputer)
+            {
+                while (playerOneHuman.score < 2 && playerTwoComputer.score < 2)
+                {
+                    this.AskForGesture();
+                    string player1Move = playerOneHuman.HumanPickGesture();
+                    string player2Move = playerTwoComputer.ComputerPickGesture();
+
+                    this.gestureCompare(player1Move, player2Move, playerOneHuman, playerTwoComputer);
+                }
+                this.AnnounceWinner(playerOneHuman, playerTwoComputer);
             }
         }
     }
