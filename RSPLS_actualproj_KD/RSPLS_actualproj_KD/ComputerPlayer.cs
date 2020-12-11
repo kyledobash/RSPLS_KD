@@ -16,10 +16,14 @@ namespace RSPLS_actualproj_KD
         {
             
         }
+
         //                  MEMBER METHODS (WHAT IT CAN DO)
-        //public string ComputerPickGesture()
-        //{
-        //    //select from gesture list using RNG
-        //}
+        public string ComputerPickGesture()
+        {
+            Random selection = new Random();
+            int selectionInt = selection.Next(0, 4);
+            //select from gesture list using RNG
+            return gestures[selectionInt];
+        }
     }
 }

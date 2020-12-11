@@ -36,6 +36,20 @@ namespace RSPLS_actualproj_KD
             HumanPlayer playerTwo = new HumanPlayer();
         }
         
-        //create a vet input method
+        public void InitialMenu()
+        {
+            Console.WriteLine("ROCK PAPER SCISSORS LIZARD SPOCK");
+            Console.WriteLine("Enter 1 for Singleplayer or 2 for Multiplayer");
+            string input = Console.ReadLine();
+            switch(input)
+            {
+                case "1" :
+                    SinglePlayerCreatePlayers();
+                    break;
+                case "2" :
+                    MultiplayerCreatePlayers();
+                    break;
+            }
+        }
     }
 }
