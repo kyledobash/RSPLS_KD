@@ -28,37 +28,31 @@ namespace RSPLS_actualproj_KD
             Console.WriteLine("Choose from: ROCK - PAPER - SCISSORS - LIZARD - SPOCK");
         }
 
-        public void SinglePlayerCreatePlayers()
-        {            
-            playerOne = new HumanPlayer();
-            players.Add(playerOne);
-            playerTwo = new ComputerPlayer();
-            players.Add(playerTwo);
-
+        public void CreatePlayers(string modeSelection)
+        {
+            switch (modeSelection)
+            {
+                case "1":
+                    playerOne = new HumanPlayer();
+                    players.Add(playerOne);
+                    playerTwo = new ComputerPlayer();
+                    players.Add(playerTwo);
+                    break;
+                case "2":                    
+                    playerOne = new HumanPlayer();
+                    players.Add(playerOne);
+                    playerTwo = new HumanPlayer();
+                    players.Add(playerTwo);
+                    break;
+            }
         }
 
-        public void MultiplayerCreatePlayers()
-        {           
-            playerOne = new HumanPlayer();
-            players.Add(playerOne);
-            playerTwo = new HumanPlayer();
-            players.Add(playerTwo);
-        }
-
-        public void InitialMenu()
+        public string InitialMenu()
         {
             Console.WriteLine("ROCK PAPER SCISSORS LIZARD SPOCK");
             Console.WriteLine("Enter 1 for Singleplayer or 2 for Multiplayer");
             string input = Console.ReadLine();
-            switch(input)
-            {
-                case "1" :
-                    SinglePlayerCreatePlayers();
-                    break;
-                case "2" :
-                    MultiplayerCreatePlayers();
-                    break;
-            }
+            return input;
         }
 
         public void ShowScore()
@@ -198,7 +192,7 @@ namespace RSPLS_actualproj_KD
         }
         public void ExecuteGameFlow()
         {
-            this.InitialMenu();
+            this.CreatePlayers(InitialMenu());
             if (playerTwo is HumanPlayer)
             {
                 while (playerOne.score < 2 && playerTwo.score < 2)
@@ -207,6 +201,7 @@ namespace RSPLS_actualproj_KD
                     string player1Move = playerOne.PickGesture();
                     this.AskForGesture("Player 2");
                     string player2Move = playerTwo.PickGesture();
+                    Console.Clear();
 
                     this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
                     this.ShowScore();
@@ -220,6 +215,7 @@ namespace RSPLS_actualproj_KD
                     this.AskForGesture("Player 1");
                     string player1Move = playerOne.PickGesture();
                     string player2Move = playerTwo.PickGesture();
+                    Console.Clear();
 
                     this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
                     this.ShowScore();
