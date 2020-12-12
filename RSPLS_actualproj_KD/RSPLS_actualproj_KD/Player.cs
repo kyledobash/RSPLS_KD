@@ -30,5 +30,7 @@ namespace RSPLS_actualproj_KD
         {
             this.score++;
         }
+
+        public abstract string PickGesture();
     }
 }

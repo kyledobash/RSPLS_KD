@@ -17,24 +17,23 @@ namespace RSPLS_actualproj_KD
             
         }
         //                  MEMBER METHODS (WHAT IT CAN DO)
-        public string HumanPickGesture()
+        public override string PickGesture()
         {
-            string humanInput = Console.ReadLine();
-            humanInput.ToUpper();
+            string humanInput = Console.ReadLine().ToUpper();
 
             switch (humanInput)
             {
-                case "ROCK" :
+                case "ROCK":
                     return gestures[0];
-                case "PAPER" :
+                case "PAPER":
                     return gestures[1];
-                case "SCISSORS" :
+                case "SCISSORS":
                     return gestures[2];
-                case "LIZARD" :
+                case "LIZARD":
                     return gestures[3];
-                case "SPOCK" :
+                case "SPOCK":
                     return gestures[4];
-                default :
+                default:
                     return "INVALID";
             }
         }

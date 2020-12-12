@@ -18,7 +18,7 @@ namespace RSPLS_actualproj_KD
         }
 
         //                  MEMBER METHODS (WHAT IT CAN DO)
-        public string ComputerPickGesture()
+        public override string PickGesture()
         {
             Random selection = new Random();
             int selectionInt = selection.Next(0, 4);

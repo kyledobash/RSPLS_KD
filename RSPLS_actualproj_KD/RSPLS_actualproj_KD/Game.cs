@@ -11,9 +11,8 @@ namespace RSPLS_actualproj_KD
         //                  MEMBER VARIABLES (WHAT IT HAS)
         public int roundCount;
         public List<Player> players;
-        public HumanPlayer playerOneHuman;
-        public HumanPlayer playerTwoHuman;
-        public ComputerPlayer playerTwoComputer;
+        public Player playerOne;
+        public Player playerTwo;
 
         //                  CONSTRUCTOR (SPAWNER)
         public Game()
@@ -23,30 +22,29 @@ namespace RSPLS_actualproj_KD
         }
 
         //                  MEMBER METHODS (WHAT IT CAN DO)
-        public void AskForGesture()
+        public void AskForGesture(string currentPlayer)
         {
-            Console.WriteLine("Please type your selected gesture and press Enter");
-            Console.WriteLine("Choose from: Rock - Paper - Scissors - Lizard - Spock");
+            Console.WriteLine(currentPlayer + " Please type your selected gesture and press Enter");
+            Console.WriteLine("Choose from: ROCK - PAPER - SCISSORS - LIZARD - SPOCK");
         }
 
         public void SinglePlayerCreatePlayers()
-        {
-            
-            playerOneHuman = new HumanPlayer();
-            players.Add(playerOneHuman);
-            playerTwoComputer = new ComputerPlayer();
-            players.Add(playerTwoComputer);
+        {            
+            playerOne = new HumanPlayer();
+            players.Add(playerOne);
+            playerTwo = new ComputerPlayer();
+            players.Add(playerTwo);
 
         }
 
         public void MultiplayerCreatePlayers()
-        {
-            playerOneHuman = new HumanPlayer();
-            players.Add(playerOneHuman);
-            playerTwoHuman = new HumanPlayer();
-            players.Add(playerTwoHuman);
+        {           
+            playerOne = new HumanPlayer();
+            players.Add(playerOne);
+            playerTwo = new HumanPlayer();
+            players.Add(playerTwo);
         }
-        
+
         public void InitialMenu()
         {
             Console.WriteLine("ROCK PAPER SCISSORS LIZARD SPOCK");
@@ -66,7 +64,7 @@ namespace RSPLS_actualproj_KD
         public void ShowScore()
         {
             Console.WriteLine("Player 1: " + players[0].score);
-            Console.WriteLine("Player 1: " + players[1].score);
+            Console.WriteLine("Player 2: " + players[1].score);
         }
 
         public void AnnounceWinner(Player player1, Player player2)
@@ -74,10 +72,12 @@ namespace RSPLS_actualproj_KD
             if (player1.score >= 2)
             {
                 Console.WriteLine("Player 1 has won the game!");
+                Console.ReadLine();
             }
             else if (player2.score >= 2)
             {
                 Console.WriteLine("Player 2 has won the game!");
+                Console.ReadLine();
             }
         }
 
@@ -185,6 +185,11 @@ namespace RSPLS_actualproj_KD
                 Console.WriteLine("Player 2's " + player2gesture + " vaporizes Player 1's " + player1gesture + "!");
                 player2.IncrementScore();
             }
+            //tie round case
+            else if (player2gesture == player1gesture)
+            {
+                Console.WriteLine("This round was a tie!");
+            }
             //edge case
             else
             {
@@ -194,30 +199,32 @@ namespace RSPLS_actualproj_KD
         public void ExecuteGameFlow()
         {
             this.InitialMenu();
-            if (players[1] == playerTwoHuman)
+            if (playerTwo is HumanPlayer)
             {
-                while (playerOneHuman.score < 2 && playerTwoHuman.score < 2)
+                while (playerOne.score < 2 && playerTwo.score < 2)
                 {
-                    this.AskForGesture();
-                    string player1Move = playerOneHuman.HumanPickGesture();
-                    this.AskForGesture();
-                    string player2Move = playerTwoHuman.HumanPickGesture();
+                    this.AskForGesture("Player 1");
+                    string player1Move = playerOne.PickGesture();
+                    this.AskForGesture("Player 2");
+                    string player2Move = playerTwo.PickGesture();
 
-                    this.gestureCompare(player1Move, player2Move, playerOneHuman, playerTwoHuman);
+                    this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
+                    this.ShowScore();
                 }
-                this.AnnounceWinner(playerOneHuman, playerTwoHuman);
+                this.AnnounceWinner(playerOne, playerTwo);
             }
-            else if (players[1] == playerTwoComputer)
+            else if (playerTwo is ComputerPlayer)
             {
-                while (playerOneHuman.score < 2 && playerTwoComputer.score < 2)
+                while (playerOne.score < 2 && playerTwo.score < 2)
                 {
-                    this.AskForGesture();
-                    string player1Move = playerOneHuman.HumanPickGesture();
-                    string player2Move = playerTwoComputer.ComputerPickGesture();
+                    this.AskForGesture("Player 1");
+                    string player1Move = playerOne.PickGesture();
+                    string player2Move = playerTwo.PickGesture();
 
-                    this.gestureCompare(player1Move, player2Move, playerOneHuman, playerTwoComputer);
+                    this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
+                    this.ShowScore();
                 }
-                this.AnnounceWinner(playerOneHuman, playerTwoComputer);
+                this.AnnounceWinner(playerOne, playerTwo);
             }
         }
     }
