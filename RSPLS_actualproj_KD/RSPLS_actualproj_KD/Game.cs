@@ -193,35 +193,32 @@ namespace RSPLS_actualproj_KD
         public void ExecuteGameFlow()
         {
             this.CreatePlayers(InitialMenu());
-            if (playerTwo is HumanPlayer)
+
+            while (playerOne.score < 2 && playerTwo.score < 2)
             {
-                while (playerOne.score < 2 && playerTwo.score < 2)
+                string player1Move;
+                string player2Move;
+
+                this.AskForGesture("Player 1");
+                player1Move = playerOne.PickGesture();
+
+                if (playerTwo is HumanPlayer)
                 {
-                    this.AskForGesture("Player 1");
-                    string player1Move = playerOne.PickGesture();
                     this.AskForGesture("Player 2");
-                    string player2Move = playerTwo.PickGesture();
-                    Console.Clear();
-
-                    this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
-                    this.ShowScore();
+                    player2Move = playerTwo.PickGesture();
                 }
-                this.AnnounceWinner(playerOne, playerTwo);
-            }
-            else if (playerTwo is ComputerPlayer)
-            {
-                while (playerOne.score < 2 && playerTwo.score < 2)
+                else
                 {
-                    this.AskForGesture("Player 1");
-                    string player1Move = playerOne.PickGesture();
-                    string player2Move = playerTwo.PickGesture();
-                    Console.Clear();
+                    player2Move = playerTwo.PickGesture();
+                }                   
 
-                    this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
-                    this.ShowScore();
-                }
-                this.AnnounceWinner(playerOne, playerTwo);
+                Console.Clear();
+                this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
+                this.ShowScore();
             }
+
+            this.AnnounceWinner(playerOne, playerTwo);
+
         }
     }
 }
