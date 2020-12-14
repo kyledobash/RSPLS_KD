@@ -43,6 +43,9 @@ namespace RSPLS_actualproj_KD
                     playerTwo = new HumanPlayer();
                     players.Add(playerTwo);
                     break;
+                default :
+                    CreatePlayers(InitialMenu());
+                    break;
             }
         }
 
