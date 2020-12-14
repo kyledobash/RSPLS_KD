@@ -57,8 +57,16 @@ namespace RSPLS_actualproj_KD
 
         public void ShowScore()
         {
-            Console.WriteLine("Player 1: " + players[0].score);
-            Console.WriteLine("Player 2: " + players[1].score);
+            Console.WriteLine("Player 1: " + playerOne.score);
+            Console.WriteLine("Player 2: " + playerTwo.score);
+        }
+
+        public void PlayAgain()
+        {
+
+            Console.WriteLine("Press Enter to play again");
+            Console.ReadLine();
+            ExecuteGameFlow();
         }
 
         public void AnnounceWinner(Player player1, Player player2)
@@ -66,13 +74,18 @@ namespace RSPLS_actualproj_KD
             if (player1.score >= 2)
             {
                 Console.WriteLine("Player 1 has won the game!");
-                Console.ReadLine();
+                PlayAgain();
             }
             else if (player2.score >= 2)
             {
                 Console.WriteLine("Player 2 has won the game!");
-                Console.ReadLine();
-            }
+                PlayAgain();
+            }            
+        }
+
+        public void DisplayRound()
+        {
+            Console.WriteLine("--- Round " + roundCount + " ---");
         }
 
         public void gestureCompare(string player1gesture, string player2gesture, Player player1, Player player2)
@@ -194,10 +207,15 @@ namespace RSPLS_actualproj_KD
         {
             this.CreatePlayers(InitialMenu());
 
+            roundCount = 0;
+            playerOne.score = 0;
+            playerTwo.score = 0;
+
             while (playerOne.score < 2 && playerTwo.score < 2)
             {
                 string player1Move;
                 string player2Move;
+                roundCount++;
 
                 this.AskForGesture("Player 1");
                 player1Move = playerOne.PickGesture();
@@ -213,6 +231,7 @@ namespace RSPLS_actualproj_KD
                 }                   
 
                 Console.Clear();
+                this.DisplayRound();
                 this.gestureCompare(player1Move, player2Move, playerOne, playerTwo);
                 this.ShowScore();
             }
